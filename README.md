@@ -69,7 +69,7 @@ journalctl -f QT_CATEGORY=js QT_CATEGORY=kwin_scripting
 ## 📜 Credits
 
 Based on the original script by [riks1233](https://github.com/riks1233/kwin_resize_and_center_window).
-```
 
----
+
+
 
