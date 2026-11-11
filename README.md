@@ -22,7 +22,7 @@ Open a terminal and clone the repository directly into your KWin scripts directo
 ```bash
 mkdir -p ~/.local/share/kwin/scripts
 git clone https://github.com/dinglemire/kwin-center-90-vertical.git ~/.local/share/kwin/scripts/kwin-center-90-vertical
-
+```
 2. Enable the script
 
     Open System Settings → Window Management → KWin Scripts.
@@ -72,17 +72,3 @@ Code
 
 ---
 
-### How to update it on GitHub:
-
-**Fastest way (directly on GitHub):**
-1. On your GitHub repo page, click the **pencil icon ✏️** (top right of the README box).
-2. Delete everything and paste the text above.
-3. Click the green **Commit changes...** button at the top right.
-
-**Terminal way (if you prefer local):**
-Inside your Dolphin terminal drawer (`F4`), paste:
-```bash
-# Update the local file, commit, and push
-git add README.md
-git commit -m "Update README with installation and 90% vertical details"
-git push
