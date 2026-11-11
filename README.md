@@ -1,31 +1,88 @@
-# KWin resize and center window
+# KWin Center & Resize Window (90% Vertical)
 
-A keyboard shortcut for KDE Wayland Plasma 6 Window Management to resize the current active window to 2/3 of the current screen's size and center it on the current screen. This resizes the window to the 16:9 aspect ratio based on current screen's smallest size (either width or height).
+A lightweight KWin script for **KDE Plasma 6 (Wayland & X11)** that centers the active window on your screen and resizes its height to **90% of the display**, while keeping its original width intact.
 
-# Installation
+---
 
-- Download the code repository and move it into the required kwin directory:
+## ✨ Features
 
-  ```bash
-  git clone https://github.com/riks1233/kwin_resize_and_center_window.git
-  mkdir -p ~/.local/share/kwin/scripts
-  mv kwin_resize_and_center_window ~/.local/share/kwin/scripts/.
-  ```
-- KDE System Settings app -> search and select "KWin Scripts" (will be under the Window Management section) -> enable the `Resize And Center Active Window` entry (which should now be here due to copying to `~/.local/share/kwin/scripts/.`).
-- KDE System Settings app -> search and select "Shortcuts" (will be under the Keyboard section) -> Window Management -> configure your desired shortcut for the `Resize And Center Active Window` entry.
-- Enjoy!
+* **90% Vertical Height:** Expands the window height to fill 90% of the monitor space.
+* **Preserves Width:** Keeps your custom window width untouched (doesn't force an awkward aspect ratio).
+* **Perfect Centering:** Automatically centers the window horizontally and vertically.
+* **Auto-Unmaximize:** Gracefully handles maximized windows before resizing.
+* **Plasma 6 Compatible:** Works reliably on modern Fedora / KDE Plasma installations.
 
-# Modifying the default sizes
+---
 
-- Change the value in the `contents/code/main.js` in "configuration area":
-  - for `coefficient`, the value should be a float in range [0 ... 1].
-  - for width and height aspect ratios choose any numeric values not less than 1.
-- Disable (press apply) and re-enable (press apply) the plugin in KDE System Settings -> Window Management -> KWin Scripts.
+## 🚀 Installation
 
-# Behavior debugging in specific apps/windows
+### 1. Clone the repository
+Open a terminal and clone the repository directly into your KWin scripts directory:
 
-- Try running `journalctl -f QT_CATEGORY=js QT_CATEGORY=kwin_scripting` in a terminal and then activate the shortcut on your app/window. Look in the terminal window if you see anything suspicious.
+```bash
+mkdir -p ~/.local/share/kwin/scripts
+git clone https://github.com/dinglemire/kwin-center-90-vertical.git ~/.local/share/kwin/scripts/kwin-center-90-vertical
 
-# Useful links
+2. Enable the script
 
-- https://develop.kde.org/docs/plasma/kwin/
+    Open System Settings → Window Management → KWin Scripts.
+
+    Check the box for Resize And Center Active Window.
+
+    Click Apply.
+
+3. Assign a Shortcut
+
+    Open System Settings → Shortcuts (under Keyboard).
+
+    In the search box, search for: Resize And Center Active Window.
+
+    Click on it, assign your preferred shortcut (e.g. Meta + C or Alt + C).
+
+    Click Apply.
+
+⚙️ Customization
+
+If you want to change the height percentage (e.g. from 90% to 85% or 95%):
+
+    Open contents/code/main.js:
+    Bash
+
+    nano ~/.local/share/kwin/scripts/kwin-center-90-vertical/contents/code/main.js
+
+    Edit the ratio at the top of the file:
+    JavaScript
+
+    // Change 0.90 to whatever you prefer (e.g. 0.85 = 85%)
+    const verticalRatio = 0.90;
+
+    Save the file and reload KWin by unchecking and re-checking the script in System Settings → KWin Scripts (then click Apply).
+
+🔍 Debugging
+
+If you run into issues on specific windows, monitor KWin's log in a terminal while triggering the shortcut:
+Bash
+
+journalctl -f QT_CATEGORY=js QT_CATEGORY=kwin_scripting
+
+📜 Credits
+
+Based on the original script by riks1233.
+Code
+
+---
+
+### How to update it on GitHub:
+
+**Fastest way (directly on GitHub):**
+1. On your GitHub repo page, click the **pencil icon ✏️** (top right of the README box).
+2. Delete everything and paste the text above.
+3. Click the green **Commit changes...** button at the top right.
+
+**Terminal way (if you prefer local):**
+Inside your Dolphin terminal drawer (`F4`), paste:
+```bash
+# Update the local file, commit, and push
+git add README.md
+git commit -m "Update README with installation and 90% vertical details"
+git push
