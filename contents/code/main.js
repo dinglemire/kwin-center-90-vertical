@@ -1,5 +1,6 @@
-// Configuration: 93% of vertical screen height
-const verticalRatio = 0.93;
+// Configuration: adjust percentages as needed (e.g., 0.80 = 80%, 0.93 = 93%)
+const horizontalRatio = 0.80; // Change this to your preferred width (e.g. 0.70, 0.80, etc.)
+const verticalRatio = 0.93;   // 93% of screen height
 
 const main = () => {
   const win = workspace.activeWindow;
@@ -14,16 +15,16 @@ const main = () => {
     workspace.slotWindowMaximize(win);
   }
 
-  // Read numbers directly (prevents the NaN / cloneObject crash)
+  // Read screen dimensions
   const screenWidth = screen.geometry.width;
   const screenHeight = screen.geometry.height;
   const screenX = screen.geometry.x;
   const screenY = screen.geometry.y;
 
-  // 1. Keep the window's current width
-  const targetWidth = win.frameGeometry.width;
+  // 1. Set width based on the screen width ratio
+  const targetWidth = Math.round(screenWidth * horizontalRatio);
 
-  // 2. Set height to 90% of screen height
+  // 2. Set height based on the screen height ratio
   const targetHeight = Math.round(screenHeight * verticalRatio);
 
   // 3. Center both horizontally and vertically
